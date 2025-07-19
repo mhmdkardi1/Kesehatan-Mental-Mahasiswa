@@ -8,7 +8,7 @@ Program Studi Rekayasa Perangkat Lunak – Universitas Bumi Gora
 
 ## Anggota Kelompok:
 
-* **2201040005 - Sukardi**
+* **2201040005 - Sukardi Alamsyah**
 * **2201040006 - Muhammad Ariq Novaldi**
 * **2201040007 - Rumnan**
 * **2201040001 - Rhamdani Azhary**
