@@ -1,64 +1,67 @@
-Berikut adalah contoh **README.md** yang keren dan rapi untuk proyek kamu dengan judul:
-
-> **Pengembangan RESTful API Sistem Manajemen Kesehatan Mental Mahasiswa Berbasis Laravel dan JWT**
 
 ---
 
-````md
-# 🧠 Mental Health API - Laravel RESTful Service
+# Pengembangan RESTful API Sistem Manajemen Kesehatan Mental Mahasiswa Berbasis Laravel dan JWT
 
-Proyek ini dibuat untuk memenuhi tugas **Ujian Akhir Semester** mata kuliah **Web Services** di **Universitas Bumi Gora**.
+Proyek ini dibuat untuk memenuhi tugas Ujian Akhir Semester Mata Kuliah **Web Services**
+Program Studi Rekayasa Perangkat Lunak – Universitas Bumi Gora
 
-> 📌 Judul Proyek: **Pengembangan RESTful API Sistem Manajemen Kesehatan Mental Mahasiswa Berbasis Laravel dan JWT**
+## Anggota Kelompok:
 
-## 👥 Anggota Kelompok
-| NIM          | Nama                     |
-|--------------|--------------------------|
-| 2201040005   | Sukardi                  |
-| 2201040006   | Muhammad Ariq Novaldi    |
-| 2201040007   | Rumnan                   |
-| 2201040001   | Rhamdani Azhary          |
+* **2201040005 - Sukardi**
+* **2201040006 - Muhammad Ariq Novaldi**
+* **2201040007 - Rumnan**
+* **2201040001 - Rhamdani Azhary**
 
 ---
 
-## 📝 Deskripsi Singkat
+## Deskripsi Singkat
 
-Sistem ini merupakan API berbasis Laravel untuk membantu memantau dan mencatat kesehatan mental mahasiswa, dengan fitur mood check-in harian, otentikasi JWT, dan pengelolaan data pengguna. Mahasiswa dapat merefleksikan kondisi emosional mereka dan menyimpan riwayat suasana hati.
+RESTful API berbasis Laravel yang berfungsi sebagai sistem manajemen kesehatan mental mahasiswa.
+Sistem ini memungkinkan pengguna (mahasiswa) untuk melakukan check-in mood harian, mencatat perasaan, dan menyimpan histori mood. Admin dapat menganalisis data untuk keperluan pemantauan kesehatan mental mahasiswa.
+
+Fitur utama:
+
+* Autentikasi JWT
+* Registrasi dan login pengguna
+* Mood check-in harian
+* Riwayat dan analisis mood pengguna
 
 ---
 
-## 🚀 Cara Menjalankan Sistem
+## Cara Menjalankan Sistem
 
 ### 1. Clone Repository
-```bash
-git clone https://github.com/namakamu/mental-health-api.git
-cd mental-health-api
-````
 
-### 2. Install Dependency
+```bash
+git clone https://github.com/namaprojekmu/mental-health-api
+cd mental-health-api
+```
+
+### 2. Install Dependencies
 
 ```bash
 composer install
 composer require tymon/jwt-auth
 ```
 
-### 3. Publish dan Generate JWT Secret
+### 3. Setup JWT Authentication
 
 ```bash
 php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 php artisan jwt:secret
 ```
 
-### 4. Konfigurasi `.env`
+### 4. Konfigurasi File `.env`
 
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-Edit file `.env`:
+Sesuaikan konfigurasi database di `.env`:
 
-```env
+```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -67,7 +70,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-### 5. Migrasi dan Seed Database
+### 5. Setup Database
 
 ```bash
 php artisan migrate
@@ -80,39 +83,50 @@ php artisan db:seed
 php artisan serve
 ```
 
-🔗 Akses API di: [http://localhost:8000](http://localhost:8000)
+Akses API melalui `http://localhost:8000`
 
 ---
 
-## 🔐 Akun Uji Coba
+## Akun Uji Coba
 
-| Role  | Email                                         | Password |
-| ----- | --------------------------------------------- | -------- |
-| Admin | [admin@example.com](mailto:admin@example.com) | password |
-| User  | [user@example.com](mailto:user@example.com)   | password |
+**Admin**
+Email: [admin@example.com](mailto:admin@example.com)
+Password: password
 
----
-
-## 📡 API Endpoint
-
-### 🔑 Auth
-
-* `POST /api/register` - Registrasi Pengguna
-* `POST /api/login` - Login dan Ambil Token
-
-### 📊 Mood Check-In
-
-* `GET /api/mood-check-ins` - Lihat semua mood user
-* `POST /api/mood-check-ins` - Tambah mood baru
-* `GET /api/mood-check-ins/{id}` - Detail mood
-* `PUT /api/mood-check-ins/{id}` - Edit mood
-* `DELETE /api/mood-check-ins/{id}` - Hapus mood
-
-> Header Authorization: `Bearer {your_token}`
+**Mahasiswa / User**
+Email: [user@example.com](mailto:user@example.com)
+Password: password
 
 ---
 
-## 📎 Contoh Request (POST /mood-check-ins)
+## API Endpoints
+
+**Base URL:** `http://localhost:8000/api`
+
+### Autentikasi
+
+* `POST /register` – Registrasi user baru
+* `POST /login` – Login user
+
+### Mood Check-In
+
+* `GET /mood-check-ins` – Lihat seluruh data check-in (user)
+* `POST /mood-check-ins` – Buat check-in mood baru
+* `GET /mood-check-ins/{id}` – Lihat detail check-in mood
+* `PUT /mood-check-ins/{id}` – Update check-in mood
+* `DELETE /mood-check-ins/{id}` – Hapus check-in mood
+
+---
+
+## Contoh Request dari Frontend (POST /mood-check-ins)
+
+**Method:** `POST`
+**Endpoint:** `http://localhost:8000/api/mood-check-ins`
+**Header:**
+`Authorization: Bearer <token JWT>`
+`Content-Type: application/json`
+
+**Body (JSON):**
 
 ```json
 {
@@ -123,31 +137,36 @@ php artisan serve
 
 ---
 
-## 📬 Dokumentasi API
+## Dokumentasi API
 
-Dokumentasi lengkap tersedia via Postman:
-📁 [Mental Health API Postman Collection](#) *(ganti dengan link koleksi kamu)*
-
----
-
-## 🤝 Contributing
-
-Terima kasih atas kontribusi Anda! Untuk kontribusi, silakan baca panduan resmi Laravel:
-📖 [Laravel Contribution Guide](https://laravel.com/docs/contributions)
+Tersedia dokumentasi lengkap via Postman Collection
+📎 *\[Link ke Dokumentasi Postman]*
 
 ---
 
-## 📄 Lisensi
+## Contributing
 
-Proyek ini menggunakan lisensi [MIT License](https://opensource.org/licenses/MIT).
-
----
-
-## 🧑‍💻 Dibuat dengan ❤️ oleh Mahasiswa RPL Universitas Bumi Gora
-
-```
+Terima kasih telah mempertimbangkan untuk berkontribusi!
+Silakan merujuk ke dokumentasi Laravel untuk panduan kontribusi yang tepat.
 
 ---
 
-Jika kamu ingin aku bantu juga menyiapkan versi `.md` yang siap di-*push* ke GitHub atau menambahkan badges (build status, license, dsb), tinggal bilang aja ya!
-```
+## Code of Conduct
+
+Demi menjaga komunitas Laravel yang ramah dan inklusif, mohon ikuti [Kode Etik Laravel](https://laravel.com/docs/contributions#code-of-conduct).
+
+---
+
+## Keamanan
+
+Jika Anda menemukan celah keamanan dalam Laravel, harap segera hubungi Taylor Otwell di: [taylor@laravel.com](mailto:taylor@laravel.com).
+
+---
+
+## Lisensi
+
+Framework Laravel dilisensikan di bawah lisensi open-source [MIT License](https://opensource.org/licenses/MIT).
+
+---
+
+Kalau mau aku buatin juga file `README.md`-nya langsung dalam bentuk file atau struktur folder Laravel lengkap, tinggal bilang aja ya.
