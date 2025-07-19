@@ -1,61 +1,153 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Berikut adalah contoh **README.md** yang keren dan rapi untuk proyek kamu dengan judul:
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> **Pengembangan RESTful API Sistem Manajemen Kesehatan Mental Mahasiswa Berbasis Laravel dan JWT**
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+````md
+# 🧠 Mental Health API - Laravel RESTful Service
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Proyek ini dibuat untuk memenuhi tugas **Ujian Akhir Semester** mata kuliah **Web Services** di **Universitas Bumi Gora**.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> 📌 Judul Proyek: **Pengembangan RESTful API Sistem Manajemen Kesehatan Mental Mahasiswa Berbasis Laravel dan JWT**
 
-## Learning Laravel
+## 👥 Anggota Kelompok
+| NIM          | Nama                     |
+|--------------|--------------------------|
+| 2201040005   | Sukardi                  |
+| 2201040006   | Muhammad Ariq Novaldi    |
+| 2201040007   | Rumnan                   |
+| 2201040001   | Rhamdani Azhary          |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 📝 Deskripsi Singkat
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Sistem ini merupakan API berbasis Laravel untuk membantu memantau dan mencatat kesehatan mental mahasiswa, dengan fitur mood check-in harian, otentikasi JWT, dan pengelolaan data pengguna. Mahasiswa dapat merefleksikan kondisi emosional mereka dan menyimpan riwayat suasana hati.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🚀 Cara Menjalankan Sistem
 
-### Premium Partners
+### 1. Clone Repository
+```bash
+git clone https://github.com/namakamu/mental-health-api.git
+cd mental-health-api
+````
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 2. Install Dependency
 
-## Contributing
+```bash
+composer install
+composer require tymon/jwt-auth
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Publish dan Generate JWT Secret
 
-## Code of Conduct
+```bash
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+php artisan jwt:secret
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 4. Konfigurasi `.env`
 
-## Security Vulnerabilities
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Edit file `.env`:
 
-## License
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mental_health_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 5. Migrasi dan Seed Database
+
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+### 6. Jalankan Server
+
+```bash
+php artisan serve
+```
+
+🔗 Akses API di: [http://localhost:8000](http://localhost:8000)
+
+---
+
+## 🔐 Akun Uji Coba
+
+| Role  | Email                                         | Password |
+| ----- | --------------------------------------------- | -------- |
+| Admin | [admin@example.com](mailto:admin@example.com) | password |
+| User  | [user@example.com](mailto:user@example.com)   | password |
+
+---
+
+## 📡 API Endpoint
+
+### 🔑 Auth
+
+* `POST /api/register` - Registrasi Pengguna
+* `POST /api/login` - Login dan Ambil Token
+
+### 📊 Mood Check-In
+
+* `GET /api/mood-check-ins` - Lihat semua mood user
+* `POST /api/mood-check-ins` - Tambah mood baru
+* `GET /api/mood-check-ins/{id}` - Detail mood
+* `PUT /api/mood-check-ins/{id}` - Edit mood
+* `DELETE /api/mood-check-ins/{id}` - Hapus mood
+
+> Header Authorization: `Bearer {your_token}`
+
+---
+
+## 📎 Contoh Request (POST /mood-check-ins)
+
+```json
+{
+  "mood": "Sedih",
+  "description": "Hari ini capek banget sama tugas kuliah"
+}
+```
+
+---
+
+## 📬 Dokumentasi API
+
+Dokumentasi lengkap tersedia via Postman:
+📁 [Mental Health API Postman Collection](#) *(ganti dengan link koleksi kamu)*
+
+---
+
+## 🤝 Contributing
+
+Terima kasih atas kontribusi Anda! Untuk kontribusi, silakan baca panduan resmi Laravel:
+📖 [Laravel Contribution Guide](https://laravel.com/docs/contributions)
+
+---
+
+## 📄 Lisensi
+
+Proyek ini menggunakan lisensi [MIT License](https://opensource.org/licenses/MIT).
+
+---
+
+## 🧑‍💻 Dibuat dengan ❤️ oleh Mahasiswa RPL Universitas Bumi Gora
+
+```
+
+---
+
+Jika kamu ingin aku bantu juga menyiapkan versi `.md` yang siap di-*push* ke GitHub atau menambahkan badges (build status, license, dsb), tinggal bilang aja ya!
+```
