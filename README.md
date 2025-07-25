@@ -168,5 +168,3 @@ Jika Anda menemukan celah keamanan dalam Laravel, harap segera hubungi Taylor Ot
 Framework Laravel dilisensikan di bawah lisensi open-source [MIT License](https://opensource.org/licenses/MIT).
 
 ---
-
-Kalau mau aku buatin juga file `README.md`-nya langsung dalam bentuk file atau struktur folder Laravel lengkap, tinggal bilang aja ya.
